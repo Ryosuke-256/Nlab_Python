@@ -5,13 +5,10 @@ import mitsuba as mi
 import scipy.io
 
 mi.set_variant('scalar_rgb')
-filename = './allIllum.xml'
-		
+filename = r'F:\Coding\Nlab_Python\Exp1\allIllum.xml'
 
-# from mitsuba.core import Bitmap, Struct, Thread
-# from mitsuba.core.xml import load_file
-
-hdr =[5, 19, 34, 39, 42, 43, 78, 80, 102, 105, 125, 152, 164, 183, 198, 201, 202, 203, 209, 222, 226, 227, 230, 232, 243, 259, 272, 278, 281, 282]
+#hdr =[5, 19, 34, 39, 42, 43, 78, 80, 102, 105, 125, 152, 164, 183, 198, 201, 202, 203, 209, 222, 226, 227, 230, 232, 243, 259, 272, 278, 281, 282]
+hdr =[19,39,78, 80, 102, 125, 152,203,226, 227, 230, 232, 243, 278, 281]
 mesh = ["bunny"]
 material = ["cu_0.025", "cu_0.129", "pla_0.075", "pla_0.225"]
 
@@ -37,21 +34,12 @@ for i in mesh:
 
 	for j in material:
 		for k in hdr:
-
-			# Thread.thread().file_resolver().append(os.path.dirname(filename))
 			scene = mi.load_file(filename, mesh=i, material=j, hdr=k, origin_x=o_x, origin_y=o_y, origin_z=o_z, target_x=t_x, target_y=t_y, target_z=t_z, object_scale =ob_scale, rotate_x = r_x, rotate_a = r_a)
 
-			# scene.integrator().render(scene, scene.sensors()[0])
-
-			# film = scene.sensors()[0].film()
 			image = mi.render(scene)
 
 			bmp = mi.Bitmap(image)
-			# bmp_XYZ = bmp.convert(Bitmap.PixelFormat.Y, Struct.Type.UInt16, srgb_gamma=False)
-			# bmp.write("output_allIllum/"+i+"/"+i+"_"+j+"_"+str(k)+".png", quality = 9)
-			mi.util.write_bitmap("result/output_allIllum/"+i+"/"+i+"_"+j+"_"+str(k)+".png", bmp)
-			# bmp_XYZ_2 = bmp.convert(Bitmap.PixelFormat.XYZ, Struct.Type.Float32, srgb_gamma=False)
-			# image_np = np.array(bmp_XYZ_2)
-			# mdic = {"image_np" : image_np}
-			scipy.io.savemat("result/output_XYZ_allillum/"+i+"/"+i+"_"+j+"_"+str(k)+".mat", {'image_XYZ': bmp})
 
+			mi.util.write_bitmap("F:/Coding/Nlab_Python/Exp1/result/output_allIllum/"+i+"/"+i+"_"+j+"_"+str(k)+".png", bmp)
+
+			scipy.io.savemat("F:/Coding/Nlab_Python/Exp1/result/output_XYZ_allillum/"+i+"/"+i+"_"+j+"_"+str(k)+".mat", {'image_XYZ': bmp})

@@ -17,7 +17,6 @@
     <default name="rotate_a" value = "0"/>
     
     <default name="object_scale" value = "25"/>
-   
 
     <integrator type="path">
         <integer name="max_depth" value="$max_depth"/>
@@ -48,7 +47,7 @@
             <string name="pixel_format" value="xyz"/>
         </film>
     </sensor>
-   
+
         
     <bsdf type="conductor" id="Cu">
         <string name="material" value="Cu"/>
