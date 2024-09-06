@@ -12,6 +12,7 @@ filename = './allIllum.xml'
 # from mitsuba.core.xml import load_file
 
 hdr =[5, 19, 34, 39, 42, 43, 78, 80, 102, 105, 125, 152, 164, 183, 198, 201, 202, 203, 209, 222, 226, 227, 230, 232, 243, 259, 272, 278, 281, 282]
+#hdr = 
 mesh = ["bunny"]
 material = ["cu_0.025", "cu_0.129", "pla_0.075", "pla_0.225"]
 
